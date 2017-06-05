@@ -1,0 +1,16 @@
+[
+{
+  "modid": "nose11",
+  "name": "Nose 1.11",
+  "description": "The new block loader.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["beck3k", "twetzel59"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
