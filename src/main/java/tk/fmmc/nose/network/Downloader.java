@@ -21,14 +21,22 @@ public class Downloader {
 	private static final String SITE = "http://localhost/nose11/";
 	private static final String LISTING = SITE + "listing.php";
 	private static final String XML_DIR = SITE + "xml/";
+	private static final String RES_DIR = SITE + "res/";
+	private static final String RESOURCE_PACK = RES_DIR + "NoseRes.zip";
 	private static final String LOCAL_DYNAMIC_DIR = "dynamic/";
 	private static final String LOCAL_LISTING = LOCAL_DYNAMIC_DIR + "_dirlist.txt";
+	private static final String LOCAL_RES_DIR = "resourcepacks/";
+	private static final String LOCAL_RESOURCE_PACK = LOCAL_RES_DIR + "NoseRes.zip";
 	
-	public static void downloadXML() throws IOException {
-		getDirList();
+	public static void download() throws IOException {
+		getResourcePack();
 		
-		List<String> files = parseFilenames();
-		downloadAll(files);
+		getDirList();
+		downloadMultiple(parseFilenames());
+	}
+	
+	private static void getResourcePack() throws IOException {
+		FileUtils.copyURLToFile(new URL(RESOURCE_PACK), new File(LOCAL_RESOURCE_PACK));
 	}
 	
 	private static void getDirList() throws IOException {
@@ -47,7 +55,7 @@ public class Downloader {
 		return Arrays.asList(names);
 	}
 	
-	private static void downloadAll(List<String> filenames) throws IOException {
+	private static void downloadMultiple(List<String> filenames) throws IOException {
 		for(String i : filenames) {
 			System.out.println(i);
 			
